@@ -54,7 +54,7 @@
                 </h3>
                 <div class="row">
                     <div class="col-2">
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/hr/8/8a/Dark_Knight.jpg">
+                        <a href="/movie"><img class="w-100" src="https://upload.wikimedia.org/wikipedia/hr/8/8a/Dark_Knight.jpg"></a>
                         <div class="stars">stars</div>
                         <div class="title">The Dark Knight</div>
                         <div class="watchlist text-primary">+Watchlist</div>
