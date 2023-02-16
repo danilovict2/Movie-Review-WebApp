@@ -10,44 +10,17 @@
                     <strong>Top picks</strong>
                 </h3>
                 <div class="row">
+                    @for ($i = 0; $i < 10; ++$i)
                     <div class="col-2">
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/hr/8/8a/Dark_Knight.jpg">
+                        <img class="w-100" src="https://image.tmdb.org/t/p/w500{{  $movieImages[$i]  }}">
                         <div class="stars">stars</div>
-                        <div class="title">The Dark Knight</div>
-                        <div class="watchlist text-primary">+Watchlist</div>
+                        <div class="title lead">{{  $movies[$i]['title']  }}</div>
+                        <div class="watchlist d-flex justify-content-center py-4">
+                            <button class="text-primary w-75" style="background-color: black; border:0ch;">+Watchlist</button>
+                        </div>
                     </div>
-                    <div class="col-2">
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/hr/8/8a/Dark_Knight.jpg">
-                        <div class="stars">stars</div>
-                        <div class="title">The Dark Knight</div>
-                        <div class="watchlist text-primary">+Watchlist</div>
-                    </div>
-                    <div class="col-2">
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/hr/8/8a/Dark_Knight.jpg">
-                        <div class="stars">stars</div>
-                        <div class="title">The Dark Knight</div>
-                        <div class="watchlist text-primary">+Watchlist</div>
-                    </div>
-                    <div class="col-2">
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/hr/8/8a/Dark_Knight.jpg">
-                        <div class="stars">stars</div>
-                        <div class="title">The Dark Knight</div>
-                        <div class="watchlist text-primary">+Watchlist</div>
-                    </div>
-                    <div class="col-2">
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/hr/8/8a/Dark_Knight.jpg">
-                        <div class="stars">stars</div>
-                        <div class="title">The Dark Knight</div>
-                        <div class="watchlist text-primary">+Watchlist</div>
-                    </div>
-                    <div class="col-2">
-                        <img class="w-100" src="https://upload.wikimedia.org/wikipedia/hr/8/8a/Dark_Knight.jpg">
-                        <div class="stars">stars</div>
-                        <div class="title">The Dark Knight</div>
-                        <div class="watchlist text-primary">+Watchlist</div>
-                    </div>
+                    @endfor
                 </div>
-            </div>
             <div class="FromYourWatchlist">
                 <h3 style="border-left: 3px solid yellow; border-radius: 3px; padding-left: 7px; margin-bottom: 30px; margin-top: 30px;">
                     <strong>From Your Watchlist</strong>
