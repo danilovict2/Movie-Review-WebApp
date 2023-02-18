@@ -12,9 +12,9 @@
                 <div class="row">
                     @foreach ($movies as $movie)
                     <div class="col-2">
-                        <img class="w-100" src="https://image.tmdb.org/t/p/w500{{  $movie['poster_path']  }}">
+                        <a href="/movie/{{ $movie['id'] }}"><img class="w-100" src="https://image.tmdb.org/t/p/w500{{  $movie['poster_path']  }}"></a>
                         <div class="stars">stars</div>
-                        <div class="title lead">{{  $movie['title']  }}</div>
+                        <a href="/movie/{{ $movie['id'] }}" style="color: white; text-decoration: none;"><div class="title lead">{{  $movie['title']  }}</div></a>
                         <div class="watchlist d-flex justify-content-center py-4">
                             <button class="text-primary w-75" style="background-color: black; border:0ch;">+Watchlist</button>
                         </div>

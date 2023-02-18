@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container" style="color: white;">
-        <h1 class="title">Title</h1>
+        <h1 class="title">{{  $movie['title']  }}</h1>
         <span class="info">
             <span class="IMDb rating">
                 IMDb rating <br>
@@ -14,14 +14,25 @@
             </span>
         </span>
         <div class="Extra Details">
-            <span class="year" style="padding-right: 5px;">year</span>
-            <span class="length">length</span>
+            <span class="year" style="padding-right: 5px;">{{ substr($movie['release_date'],0,4) }}</span>
+            <span class="length">{{  round($movie['runtime']/60)  }}h {{$movie['runtime']-60}}m</span>
         </div>
         <div class="details">
-            <img class="w-30 pt-3" src="https://upload.wikimedia.org/wikipedia/hr/8/8a/Dark_Knight.jpg">
+            <img class="pt-3" src="https://image.tmdb.org/t/p/w500{{  $movie['poster_path']  }}" style="max-width: 20em;">
+            <img src="https://image.tmdb.org/t/p/w500{{  $movie['backdrop_path']  }}" style="  padding-top: 15px; width: 60em; padding-left: 2px; height: 31em;">
             <div class="directorAndWriter">
-                <span class="director">Director</span>
-                <span class="writer">Writer</span>
+                <span class="director">
+                    Director
+                    @foreach ($directorsAndWriters['directors'] as $director)
+                        {{ $director }}
+                    @endforeach
+                </span>
+                <span class="writer">
+                    Writer
+                    @foreach ($directorsAndWriters['writers'] as $writer)
+                        {{ $writer }}
+                    @endforeach
+                </span>
             </div>
         </div>
     </div>
