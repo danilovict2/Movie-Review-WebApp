@@ -16,7 +16,7 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import ExampleComponent from './components/WatchlistButton.vue';
-app.component('example-component', ExampleComponent);
+app.component('watchlist-button', ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your

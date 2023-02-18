@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable{
-    
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -43,6 +43,6 @@ class User extends Authenticatable{
     ];
 
     public function watchlist(){
-        return $this->hasMany('movies');
+        return $this->hasMany(Movie::class);
     }
 }
