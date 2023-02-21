@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <button class="text-primary w-100 border-0 bg-black" @click = "addToWatchlist" v-text="buttonText"></button>
+        <button class="text-primary w-100 border-0 bg-black" @click = "addToWatchlist" v-text="setButtonText"></button>
     </div>
 </template>
 
@@ -9,22 +9,26 @@
     export default {
         methods:{
             addToWatchlist(){
+
                 axios.post('/watchlist/' + this.movie_id).then(response =>{
-                    console.log(response.data);
+                    this.buttonText = response.data;
                 }).catch(errors =>{
                     if(errors.response.status == 401){
                         window.location = '/login';
                     }
+
                 });
             }
         },
         props:['movie_id'],
         data:function(){
-
+            return{
+                
+            }
         },
         computed:{
-            buttonText(){
-                return "+Watchlist";
+            setButtonText(){
+                return this.buttonText;
             }
         }
     }

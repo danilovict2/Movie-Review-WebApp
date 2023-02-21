@@ -16,7 +16,7 @@
                         <div class="stars">stars</div>
                         <a href="/movie/{{ $movie['id'] }}" style="color: white; text-decoration: none;"><div class="title lead">{{  $movie['title']  }}</div></a>
                         <div class="watchlist d-flex justify-content-center py-4">
-                            <watchlist-button movie_id = "{{ $movie['id'] }}">+Watchlist</watchlist-button>
+                            <watchlist-button movie_id = "{{ $movie['id'] }}" >+Watchlist</watchlist-button>
                         </div>
                     </div>
                     @endforeach

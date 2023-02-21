@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
+        Schema::create('watchlisted_movies', function (Blueprint $table) {
             $table->unsignedBigInteger('movie_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->index('user_id');
+            $table->primary('movie_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('restrict');
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('watchlisted_movies');
     }
 };
