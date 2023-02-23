@@ -14,7 +14,7 @@ class HomeController extends Controller{
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -23,11 +23,17 @@ class HomeController extends Controller{
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        $movies = [];
+        $recommendedMovies = [];
         $movie_ids = [2,3,5,6,8,9,11,12,13,114];
         for($i = 0; $i < 10; ++$i){
-            $movies[$i] = app('App\Http\Controllers\APIController')->getMovie($movie_ids[$i]);
+            $recommendedMovies[$i] = app('App\Http\Controllers\APIController')->getMovie($movie_ids[$i]);
         }
-        return view('home',compact('movies'));
+        $watchlistedMovies = [];
+        if(isset(auth()->user()->watchlist)){
+            foreach(auth()->user()->watchlist as $watchlistedMovie){
+                $watchlistedMovies[] = app('App\Http\Controllers\APIController')->getMovie($watchlistedMovie['movie_id']);
+            }
+        }
+        return view('home',compact('recommendedMovies','watchlistedMovies'));
     }
 }

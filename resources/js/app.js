@@ -15,8 +15,10 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/WatchlistButton.vue';
-app.component('watchlist-button', ExampleComponent);
+import WatchlistButton from './components/WatchlistButton.vue';
+app.component('watchlist-button', WatchlistButton);
+import ReviewButton from './components/ReviewButton.vue';
+app.component('review-button', ReviewButton);
 
 /**
  * The following block of code may be used to automatically register your

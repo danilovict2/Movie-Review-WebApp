@@ -23,12 +23,12 @@
         props:['movie_id'],
         data:function(){
             return{
-                
+
             }
         },
         computed:{
             setButtonText(){
-                return this.buttonText;
+                return "+Watchlist";
             }
         }
     }
