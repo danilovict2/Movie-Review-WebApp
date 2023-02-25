@@ -36,3 +36,30 @@
     margin-right: .5rem;
     align-self: center;
 }
+
+
+.rating input {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.rating input::before {
+    content: '\f005';
+    font-family: fontAwesome;
+    position: absolute;
+    font-size: 34px;
+    position: absolute;
+    color: #111;
+    transition: 0.1s;
+}
+
+.rating input:hover ~ input::before,
+.rating input:hover::before,
+.rating input:checked ~ input::before,
+.rating input:checked::before
+{
+    color: blue;
+}
