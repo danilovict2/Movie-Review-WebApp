@@ -14,11 +14,7 @@
         },
         methods:{
             addToWatchlist(){
-                axios.get('/isWatchlisted/' + this.movie_id).then(response =>{
-                    this.isWatchlisted = response.data;
-                });
                 axios.post('/watchlist/' + this.movie_id).then(response =>{
-
                     this.isWatchlisted = !this.isWatchlisted;
                 }).catch(errors =>{
                     if(errors.response.status == 401){
