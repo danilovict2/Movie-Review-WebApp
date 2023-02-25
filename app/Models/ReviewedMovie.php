@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WatchlistedMovie extends Model{
-    
+class ReviewedMovie extends Model{
+
     use HasFactory;
 
     protected $fillable = [
         'movie_id',
     ];
 
-    public function watchlisted(){
+    public function reviewedBy(){
         return $this->belongsTo(User::class);
     }
 }

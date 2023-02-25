@@ -25,3 +25,7 @@ Route::get('/movie/{movie_id}', [App\Http\Controllers\MovieController::class, 'i
 
 Route::post('/watchlist/{movie_id}', [App\Http\Controllers\WatchlistController::class, 'store'])->name('watchlist.store');
 Route::get('/isWatchlisted/{movie_id}', [App\Http\Controllers\WatchlistController::class, 'isWatchlisted'])->name('watchlist.isWatchlisted');
+
+Route::get('/review/{movie_id}/rate', [App\Http\Controllers\ReviewController::class, 'index'])->name('review.index');
+Route::post('/review/{movie_id}', [App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
+

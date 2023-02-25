@@ -45,4 +45,8 @@ class User extends Authenticatable{
     public function watchlist(){
         return $this->hasMany(WatchlistedMovie::class);
     }
+
+    public function reviewed(){
+        return $this->hasMany(ReviewedMovie::class);
+    }
 }

@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Http;
 
 class APIController extends Controller{
 
-    public function getMovieCrew($movie_id){
-        $api_key = env("API_KEY");
+    public function getMovieCrew(int $movie_id){
+        $api_key = env('API_KEY');
         $movieCredits = Http::get("https://api.themoviedb.org/3/movie/$movie_id/credits?api_key=$api_key");
         $directors = [];
         $writers = [];
@@ -22,8 +22,8 @@ class APIController extends Controller{
         return compact('directors','writers');
     }
 
-    public function getMovie($movie_id){
-        $api_key = env("API_KEY");
+    public function getMovie(int $movie_id){
+        $api_key = env('API_KEY');
         return Http::get("https://api.themoviedb.org/3/movie/$movie_id?api_key=$api_key");
     }
 }
