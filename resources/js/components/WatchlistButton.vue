@@ -7,11 +7,19 @@
 <script>
     import axios from 'axios';
     export default {
+        created(){
+            axios.get('/isWatchlisted/' + this.movie_id).then(response =>{
+                this.isWatchlisted = response.data;
+            });
+        },
         methods:{
             addToWatchlist(){
-
+                axios.get('/isWatchlisted/' + this.movie_id).then(response =>{
+                    this.isWatchlisted = response.data;
+                });
                 axios.post('/watchlist/' + this.movie_id).then(response =>{
-                    this.buttonText = response.data;
+
+                    this.isWatchlisted = !this.isWatchlisted;
                 }).catch(errors =>{
                     if(errors.response.status == 401){
                         window.location = '/login';
@@ -23,12 +31,12 @@
         props:['movie_id'],
         data:function(){
             return{
-
+                isWatchlisted : false
             }
         },
         computed:{
             setButtonText(){
-                return "+Watchlist";
+                return this.isWatchlisted ? "-Watchlist" : "+Wathclist";
             }
         }
     }

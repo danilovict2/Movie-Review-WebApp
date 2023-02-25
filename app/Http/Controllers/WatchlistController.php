@@ -12,17 +12,20 @@ class WatchlistController extends Controller{
         $this->middleware('auth');
     }
 
-    public function store($movie_id){
+    public function store(int $movie_id){
         $watchlistedMovie = WatchlistedMovie::where('movie_id',$movie_id);
 
         if($watchlistedMovie->exists()){
             $watchlistedMovie->delete();
-            echo "+Watchlist";
         }else{
             auth()->user()->watchlist()->create([
                 'movie_id' => $movie_id,
             ]);
-            echo "-Watchlist";
         }
+    }
+
+    public function isWatchlisted(int $movie_id){
+        $wathchlistedMovie = WatchlistedMovie::where('movie_id',$movie_id);
+        return $wathchlistedMovie->exists();
     }
 }

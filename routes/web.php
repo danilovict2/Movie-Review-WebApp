@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
 
 Auth::routes();
 
-Route::post('/watchlist/{movie_id}', [App\Http\Controllers\WatchlistController::class, 'store'])->name('watchlist.store');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/movie/{movie_id}', [App\Http\Controllers\MovieController::class, 'index'])->name('movie.index');
 
+Route::post('/watchlist/{movie_id}', [App\Http\Controllers\WatchlistController::class, 'store'])->name('watchlist.store');
+Route::get('/isWatchlisted/{movie_id}', [App\Http\Controllers\WatchlistController::class, 'isWatchlisted'])->name('watchlist.isWatchlisted');
