@@ -6,8 +6,8 @@
             @csrf
 
             <div class="rating d-flex flex-row-reverse mb-2 pt-2">
-                @for ($i = 1; $i <= 10; ++$i)
-                    <input type="radio" class="" name="star{{$i}}" value="{{$i}}">
+                @for ($i = 10; $i >= 1; $i--)
+                    <input type="radio" name="star{{$i}}" value="{{$i}}">
                 @endfor
             </div>
             <div class="submit d-flex justify-content-center pt-5">
