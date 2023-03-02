@@ -11,6 +11,7 @@ class ReviewedMovie extends Model{
 
     protected $fillable = [
         'movie_id',
+        'review'
     ];
 
     public function reviewedBy(){

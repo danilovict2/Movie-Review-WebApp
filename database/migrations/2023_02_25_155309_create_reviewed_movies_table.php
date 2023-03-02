@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('reviewed_movies', function (Blueprint $table) {
             $table->unsignedBigInteger('movie_id');
             $table->unsignedBigInteger('user_id');
-            $table->tinyInteger('review')->default(0);
+            $table->integer('review');
             $table->timestamps();
 
             $table->index('user_id');

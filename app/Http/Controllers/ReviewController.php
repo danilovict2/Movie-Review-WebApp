@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller{
 
@@ -15,27 +18,19 @@ class ReviewController extends Controller{
     }
 
     public function store(int $movie_id){
-        $data = request()->validate([
-            'star1' => 'nullable',
-            'star2' => 'nullable',
-            'star3' => 'nullable',
-            'star4' => 'nullable',
-            'star5' => 'nullable',
-            'star6' => 'nullable',
-            'star7' => 'nullable',
-            'star8' => 'nullable',
-            'star9' => 'nullable',
-            'star10' => 'nullable'
-        ]);
-        if(!$data){
-            return redirect("/review/$movie_id/rate");
+        $data = request()->except('_token');
+        $validator = Validator::make($data, ['star' => 'required|in:1,2,3,4,5,6,7,8,9,10']);
+        if($validator->fails()){
+            return Redirect::back()->withErrors($validator);
         }
-        $key = array_keys($data)[0];
         auth()->user()->reviewed()->create([
             'movie_id' => $movie_id,
-            'review' => (int)$data[$key]
+            'review' => (int)$data['star']
         ]);
         return redirect('home');
     }
 
+    public function isReviewed(int $movie_id) : bool{
+        return auth()->user()->reviewed->contains($movie_id);
+    }
 }

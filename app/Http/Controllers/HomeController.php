@@ -28,6 +28,7 @@ class HomeController extends Controller{
         for($i = 0; $i < 10; ++$i){
             $recommendedMovies[$i] = app('App\Http\Controllers\APIController')->getMovie($movie_ids[$i]);
         }
+        
         $watchlistedMovies = [];
         if(isset(auth()->user()->watchlist)){
             foreach(auth()->user()->watchlist as $watchlistedMovie){
