@@ -28,4 +28,4 @@ Route::get('/isWatchlisted/{movie_id}', [App\Http\Controllers\WatchlistControlle
 
 Route::get('/review/{movie_id}/rate', [App\Http\Controllers\ReviewController::class, 'index'])->name('review.index');
 Route::post('/review/{movie_id}', [App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
-
+Route::get('/review/average/{movie_id}', [App\Http\Controllers\ReviewController::class, 'averageReview']);

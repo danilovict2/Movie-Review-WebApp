@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -32,5 +32,9 @@ class ReviewController extends Controller{
 
     public function isReviewed(int $movie_id) : bool{
         return auth()->user()->reviewed->contains($movie_id);
+    }
+
+    public function averageReview(int $movie_id) : float{
+        return DB::table('reviewed_movies')->where("movie_id","=",$movie_id)->avg('review') ?? 0.0;
     }
 }

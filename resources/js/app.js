@@ -17,7 +17,8 @@ const app = createApp({});
 
 import WatchlistButton from './components/WatchlistButton.vue';
 app.component('watchlist-button', WatchlistButton);
-
+import Ratings from './components/Ratings.vue';
+app.component('rating-stars', Ratings);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
