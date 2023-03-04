@@ -12,7 +12,7 @@ class WatchlistController extends Controller{
         $this->middleware('auth');
     }
 
-    public function store(int $movie_id){
+    public function store(int $movie_id) : void{
         $watchlistedMovie = WatchlistedMovie::where('movie_id',$movie_id);
 
         if($watchlistedMovie->exists()){
@@ -24,7 +24,7 @@ class WatchlistController extends Controller{
         }
     }
 
-    public function isWatchlisted(int $movie_id){
+    public function isWatchlisted(int $movie_id) : bool{
         $wathchlistedMovie = WatchlistedMovie::where('movie_id',$movie_id);
         return $wathchlistedMovie->exists();
     }

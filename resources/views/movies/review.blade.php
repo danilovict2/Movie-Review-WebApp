@@ -21,7 +21,18 @@
                     Rate
                 </button>
             </div>
+            @if ($isReviewed)
+                @method('PATCH')
+                <div class="my-4 d-flex justify-content-center">
+                    <form action="/review/{{ $movie_id }}" method="POST">
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Remove your rating
+                        </button>
+                    </form>
+                </div>
 
+            @endif
         </form>
     </div>
 @endsection
