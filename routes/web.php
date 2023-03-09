@@ -27,11 +27,14 @@ Route::get('/movie/{movie_id}', [App\Http\Controllers\MovieController::class, 'i
 Route::post('/watchlist/{movie_id}', [App\Http\Controllers\WatchlistController::class, 'store'])->name('watchlist.store');
 Route::get('/isWatchlisted/{movie_id}', [App\Http\Controllers\WatchlistController::class, 'isWatchlisted'])->name('watchlist.isWatchlisted');
 
-Route::get('/review/{movie_id}/rate', [App\Http\Controllers\ReviewController::class, 'index'])->name('review.index');
-Route::post('/review/{movie_id}', [App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
-Route::patch('/review/{movie_id}', [App\Http\Controllers\ReviewController::class, 'update'])->name('review.update');
-Route::delete('/review/{movie_id}', [App\Http\Controllers\ReviewController::class, 'delete'])->name('review.delete');
-Route::get('/review/average/{movie_id}', function(int $movie_id){
-    return DB::table('reviewed_movies')->where("movie_id","=",$movie_id)->avg('review') ?? 0.0;
-})->withoutMiddleware([EnsureTokenIsValid::class]);
-Route::get('/review/isReviewed/{movie_id}', [App\Http\Controllers\ReviewController::class, 'isReviewed']);
+
+Route::group(['prefix' => '/review'], function () {
+    Route::get('/{movie_id}/rate', [App\Http\Controllers\ReviewController::class, 'index'])->name('review.index');
+    Route::post('/{movie_id}', [App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
+    Route::patch('/{movie_id}', [App\Http\Controllers\ReviewController::class, 'update'])->name('review.update');
+    Route::delete('/{movie_id}', [App\Http\Controllers\ReviewController::class, 'delete'])->name('review.delete');
+    Route::get('/average/{movie_id}', function (int $movie_id) {
+        return DB::table('reviewed_movies')->where("movie_id", "=", $movie_id)->avg('review') ?? 0.0;
+    })->withoutMiddleware([EnsureTokenIsValid::class]);
+    Route::get('/isReviewed/{movie_id}', [App\Http\Controllers\ReviewController::class, 'isReviewed']);
+});
