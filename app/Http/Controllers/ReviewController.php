@@ -30,7 +30,7 @@ class ReviewController extends Controller{
         if($validator->fails()){
             return Redirect::back()->withErrors($validator);
         }
-        auth()->user()->reviewed()->create([
+        ReviewedMovie::factory()->create([
             'movie_id' => $movie_id,
             'review' => (int)$data['star']
         ]);
@@ -44,8 +44,7 @@ class ReviewController extends Controller{
             return Redirect::back()->withErrors($validator);
         }
         $user_id = auth()->user()->id;
-        DB::table('reviewed_movies')
-        ->where('movie_id','=',$movie_id)
+        ReviewedMovie::where('movie_id','=',$movie_id)
         ->where('user_id','=',$user_id)
         ->update(['review' => (int)$data['star']]);
         return redirect('home');
@@ -53,8 +52,7 @@ class ReviewController extends Controller{
 
     public function delete(int $movie_id){
         $user_id = auth()->user()->id;
-        DB::table('reviewed_movies')
-        ->where('movie_id','=',$movie_id)
+        ReviewedMovie::where('movie_id','=',$movie_id)
         ->where('user_id','=',$user_id)
         ->delete();
         return redirect('home');

@@ -18,7 +18,7 @@ class WatchlistController extends Controller{
         if($watchlistedMovie->exists()){
             $watchlistedMovie->delete();
         }else{
-            auth()->user()->watchlist()->create([
+            WatchlistedMovie::factory()->create([
                 'movie_id' => $movie_id,
             ]);
         }
