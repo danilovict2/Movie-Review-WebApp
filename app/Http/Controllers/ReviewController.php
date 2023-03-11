@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ReviewedMovie;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
+
 
 class ReviewController extends Controller{
 

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movie;
+
 use App\Models\WatchlistedMovie;
-use Illuminate\Http\Request;
+
 
 class WatchlistController extends Controller{
 
