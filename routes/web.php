@@ -38,3 +38,5 @@ Route::group(['prefix' => '/review'], function () {
     })->withoutMiddleware([EnsureTokenIsValid::class]);
     Route::get('/isReviewed/{movie_id}', [App\Http\Controllers\ReviewController::class, 'isReviewed']);
 });
+
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'search'])->name('search');

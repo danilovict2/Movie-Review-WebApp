@@ -37,9 +37,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <form action="{{ url('search') }}" method="GET" role="search">
+                        <form action="/search" method="GET" role="search">
                             <div class="input-group">
-                                <input type="search" placeholder="Search IMDb" class="form-control" size="50">
+                                <input type="search" placeholder="Search IMDb" class="form-control" size="50" name="searchText">
                                 <button type="submit" class="btn btn-primary px-1" style="width: 70px;">
                                     Search
                                 </button>

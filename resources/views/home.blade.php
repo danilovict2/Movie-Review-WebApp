@@ -12,8 +12,9 @@
                 <div class="row">
                     @foreach ($recommendedMovies as $movie)
                         <div class="col-2">
-                            <a href="/movie/{{ $movie['id'] }}"><img class="w-100"
-                                    src="https://image.tmdb.org/t/p/w500{{ $movie['poster_path'] }}"></a>
+                            <a href="/movie/{{ $movie['id'] }}">
+                                <img class="w-100" src="https://image.tmdb.org/t/p/w500{{ $movie['poster_path'] }}">
+                            </a>
                             <rating-stars-small movie_id = {{$movie['id']}}></rating-stars-small>
                             <a href="/movie/{{ $movie['id'] }}" style="color: white; text-decoration: none; white-space: nowrap;">
                                 <div class="title lead px-2">{{ $movie['title'] }}</div>

@@ -31,4 +31,9 @@ class APIController extends Controller{
         $api_key = env('API_KEY');
         return Http::get("https://api.themoviedb.org/3/movie/popular?api_key=$api_key&language=en-US&page=1");
     }
+
+    public function search(string $query){
+        $api_key = env('API_KEY');
+        return Http::get("https://api.themoviedb.org/3/search/movie?api_key=$api_key&language=en-US&page=1&query=$query");
+    }
 }
